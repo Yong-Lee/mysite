@@ -1,0 +1,66 @@
+{% include "base.html" %}
+	{% block content %}	
+		<div class="span2">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					列表标题
+				</li>
+				<li>
+					<a href="/file/fileupload/">ISO文件上传</a>
+				</li>
+				<li>
+					<a href="/configfile/ksconfig">6u3_64.cfg文件配置</a>
+				</li>
+				<li>
+					<a href="/configfile/defaultconfig/">defult配置</a>
+				</li>
+				<li>
+					<a href="/file/osall/">用户可按装系统管理</a>
+				</li>
+				<li>
+					<a href="/file/osadd/">添加系统</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span10">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							编号
+						</th>
+						<th>
+							用户IP
+						</th>
+						<th>
+							用户可按装系统
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				<script language="javascript">
+					var a=1;
+				</script>
+				{% for os in lPage %}
+					<tr>
+						<td id="num">
+							<script>
+								document.write(a++);
+							</script> 
+						</td>
+						<td>
+							{{os.userip}}
+						</td>
+						<td>
+							{{os.oscontext}}
+						</td>
+						<td><a href="/file/osdel?id={{os.id}}">
+							<button class="btn" type="button">删除</button></a>
+						</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			{% include "common/paginator.html" %}
+		</div>
+	{% endblock %}

@@ -1,0 +1,38 @@
+{% include "base.html" %}
+	{% block content %}	
+		<div class="span2">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					功能列表
+				</li>
+				<li class="active">
+					<a href="/configfile/dhcpconfig/">配置dhcp</a>
+				</li>
+				<li>
+					<a href="/configfile/assignip/">分配IP地址</a>
+				</li>
+				<li>
+					<a href="/configfile/defaultconfig/">defult配置</a>
+				</li>
+				<li>
+					<a href="/configfile/md5/">md5查看</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span10">
+			<form method="post">
+				{% csrf_token %}
+			    <div class="control-group">
+			         	<div class="controls">请填入想要创建的ip</div>
+			         	<div class="controls">
+							<input type="text" name="assignip"/>
+			         	</div>
+					<div class="controls">
+						<button class="btn" type="submit">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	{% endblock %}
+
+

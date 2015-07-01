@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% include "base.html" %}
+		{% block content %}
+			<div class="span2">
+				<ul class="nav nav-list">
+					<li class="nav-header">
+						列表
+					</li>
+					<li>
+						<a href="/user/useradd/">添加</a>
+					</li>
+				</ul>
+			</div>
+			<div class="span10">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								编号
+							</th>
+							<th>
+								用户IP
+							</th>
+							<th>
+								用户名
+							</th>
+							<th>
+								密码
+							</th>
+							<th>
+								权限
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<script language="javascript">
+						var a=1;
+					</script>
+					{% for user in lPage %}
+						<tr>
+							<td id="num">
+								<script>
+									document.write(a++);
+								</script> 
+							</td>
+							<td>
+								{{user.userip}}
+							</td>
+							<td>
+								{{user.username}}
+							</td>
+							<td>
+								{{user.password}}
+							</td>
+							<td>
+								{{user.userauth}}
+							</td>
+							<td>
+								<a href="/user/userupdate?userip={{user.userip}}">
+									<button class="btn" type="button">
+										修改
+									</button>
+								</a>
+							</td>
+							<td><a href="/user/delete?userip={{user.userip}}">
+								<button class="btn" type="button">删除</button></a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+				{% include "common/paginator.html" %}
+			</div>
+		{% endblock %}

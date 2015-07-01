@@ -1,0 +1,39 @@
+{% include "base.html" %}
+	{% block content %}	
+		<div class="span2">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					列表标题
+				</li>
+				<li class="active">
+					<a href="/file/fileupload/">ISO文件上传</a>
+				</li>
+				<li>
+					<a href="/configfile/ksconfig">6u3_64.cfg文件配置</a>
+				</li>
+				<li>
+					<a href="/configfile/defaultconfig/">defult配置</a>
+				</li>
+				<li>
+					<a href="/file/osall/">用户可按装系统管理</a>
+				</li>
+				<li>
+					<a href="/file/osadd/">添加系统</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span10">
+			<form method="post">
+				{% csrf_token %}
+			    <div class="control-group">
+			         	<div class="controls">请配置ks</div>
+			         	<div class="controls">
+			            		<div class="textarea"><textarea name="ksconfig" id="ksconfig">{{ksconfig}}</textarea></div>
+			         	</div>
+					<div class="controls">
+						<button class="btn" type="submit">保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	{% endblock %}

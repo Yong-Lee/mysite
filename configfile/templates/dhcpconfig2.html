@@ -1,0 +1,37 @@
+{% include "base.html" %}
+	{% block content %}	
+		<div class="span2">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					功能列表
+				</li>
+				<li class="active">
+					<a href="/configfile/dhcpconfig/">配置dhcp</a>
+				</li>
+				<li>
+					<a href="#">分配IP地址</a>
+				</li>
+				<li>
+					<a href="#">defult配置</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span10">
+			<form class="form-horizontal" method="post">
+				{% csrf_token %}
+			    <div class="control-group">
+			         <!--	<label class="control-label">请配置dhcp</label>-->
+			         	<div class="controls">请配置dhcp</div>
+			         	<div class="controls">
+			            	<div class="textarea">
+				              <textarea name="dhcpconfig" id="dhcpconfig">
+				              	{{dhcpconfig}}</textarea>
+			            	</div>
+			         	</div>
+					<div class="controls">
+						<button class="btn" type="submit">保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	{% endblock %}

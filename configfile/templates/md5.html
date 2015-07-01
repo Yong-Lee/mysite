@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% include "base.html" %}
+		{% block content %}
+			<div class="span2">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					功能列表
+				</li>
+				<li class="active">
+					<a href="/configfile/dhcpconfig/">配置dhcp</a>
+				</li>
+				<li>
+					<a href="/configfile/assignip/">分配IP地址</a>
+				</li>
+				<li>
+					<a href="/configfile/defaultconfig/">defult配置</a>
+				</li>
+				<li>
+					<a href="/configfile/md5/">md5查看</a>
+				</li>
+			</ul>
+		</div>
+			<div class="span10">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								编号
+							</th>
+							<th>
+								操作
+							</th>
+							<th>
+								MD5
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<script language="javascript">
+						var a=1;
+					</script>
+					{% for dhcpmd5 in lPage %}
+						<tr>
+							<td id="num">
+								<script>
+									document.write(a++);
+								</script> 
+							</td>
+							<td>
+								{{dhcpmd5.username}}
+							</td>
+							<td>
+								{{dhcpmd5.dhcpmd5}}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+				{% include "common/paginator.html" %}
+			</div>
+		{% endblock %}

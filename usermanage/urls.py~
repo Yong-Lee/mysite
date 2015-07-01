@@ -1,0 +1,6 @@
+from usermanage.views import user
+from django.conf.urls import patterns, include, url
+
+urlpattern = patterns('usermanage.views',
+	(r'^$', user),
+)

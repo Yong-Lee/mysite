@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% include "base.html" %}
+		{% block content %}
+			<div class="span2">
+				<ul class="nav nav-list">
+					<li class="nav-header">
+						列表
+					</li>
+					<li>
+						<a href="/log/selectlog/">搜索</a>
+					</li>
+				</ul>
+			</div>
+			<div class="span10">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								编号
+							</th>
+							<th>
+								用户IP
+							</th>
+							<th>
+								时间
+							</th>
+							<th>
+								内容
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<script language="javascript">
+						var a=1;
+					</script>
+					{% for log in lPage %}
+						{%if log.userip == userip%}
+						<tr>
+							<td id="num">
+								<script>
+									document.write(a++);
+								</script> 
+							</td>
+							<td>
+								{{log.userip}}
+							</td>
+							<td>
+								{{log.logtime}}
+							</td>
+							<td>
+								{{log.logcontext}}
+							</td>
+						</tr>
+						{%endif%}
+					{% endfor %}
+					</tbody>
+				</table>
+				{% include "common/paginator.html" %}
+			</div>
+		{% endblock %}
